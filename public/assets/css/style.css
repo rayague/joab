@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One:ital@0;1&family=Caveat:wght@400;500;600;700&family=Comfortaa:wght@500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Edu+TAS+Beginner:wght@400;500;600;700&family=Griffy&family=Indie+Flower&family=Nunito:ital,wght@0,200;0,300;0,600;0,1000;1,200;1,300;1,500;1,600;1,900;1,1000&family=Open+Sans:ital,wght@0,300;0,700;0,800;1,700;1,800&family=Permanent+Marker&family=Playfair+Display:ital,wght@0,400;0,500;0,900;1,400;1,500;1,800;1,900&family=Poiret+One&family=Raleway:ital,wght@0,100;0,200;0,300;0,600;0,800;0,900;1,100;1,200;1,500;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,400;0,900;1,100;1,300;1,400;1,700;1,900&family=Sacramento&family=Shadows+Into+Light&family=Zeyada&display=swap');
+/* 
+font-family: 'Comfortaa', sans-serif;
+font-family: 'Dancing Script', cursive;
+font-family: 'Edu TAS Beginner', cursive;
+font-family: 'Nunito', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Playfair Display', serif;
+font-family: 'Raleway', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+[type='radio'] {
+	display: none;
+}
+
+.img-bars{
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  html{
+    font-size: 45.45%;
+  }
+}
+#slider {
+    height: 35vw;
+    position: relative;
+    perspective:1000px;
+    transform-style: preserve-3d;
+
+}
+#slider label {
+    margin: auto;
+    width: 60%;
+    height: 100%;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+  }
+#slider label img{
+    height: 100%;
+    width: 100%;
+}
+
+#s1:checked~#slide4,
+#s2:checked~#slide5,
+#s3:checked~#slide1,
+#s4:checked~#slide2,
+#s5:checked~#slide3 {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
+  transform: translate3d(-30%, 0px, -200px);
+}
+
+#s1:checked~#slide5,
+#s2:checked~#slide1,
+#s3:checked~#slide2,
+#s4:checked~#slide3,
+#s5:checked~#slide4 {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .3), 0 2px 2px 0 rgba(0, 0, 0, .2);
+  transform: translate3d(-15%, 0, -100px);
+}
+
+#s1:checked~#slide1,
+#s2:checked~#slide2,
+#s3:checked~#slide3,
+#s4:checked~#slide4,
+#s5:checked~#slide5 {
+  box-shadow: 0 13px 25px 0 rgba(0, 0, 0, .3), 0 11px 7px 0 rgba(0, 0, 0, .19);
+  transform: translate3d(0, 0, 0);
+}
+
+#s1:checked~#slide2,
+#s2:checked~#slide3,
+#s3:checked~#slide4,
+#s4:checked~#slide5,
+#s5:checked~#slide1 {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .3), 0 2px 2px 0 rgba(0, 0, 0, .2);
+  transform: translate3d(15%, 0, -100px);
+}
+
+#s1:checked~#slide3,
+#s2:checked~#slide4,
+#s3:checked~#slide5,
+#s4:checked~#slide1,
+#s5:checked~#slide2 {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .37);
+  transform: translate3d(30%, 0, -200px);
+}
+body{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+  /* background-color: #fff; */
+}
+
+body::-webkit-scrollbar{
+  width: 10px;
+}
+
+body::-webkit-slider-thumb{
+  background-color: wheat;
+  border-radius: 20px;
+}
+
+body::-webkit-slider-thumb:hover{
+  background-color: rgb(85, 56, 3);
+  border-radius: 20px;
+}
+
+body::-webkit-scrollbar-track{
+  background-color: wheat;
+}
+
+.letters{
+  letter-spacing: 10px;
+  font-size: 70px;
+  margin-top: 350px;
+  font-weight: bold;
+  animation: chargement 0.7s linear infinite;
+}
+
+
+
+
+.loader{
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background: rgb(0, 0, 0);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 100000;
+  color: white;
+
+}
+
+
+header {
+    position: relative; /* Ajouté pour le positionnement absolu de la vidéo */
+    height: 100vh; /* hauteur ajustée pour couvrir l'écran */
+    width: 100%; /* largeur ajustée pour couvrir l'écran */
+    z-index: 1; /* z-index pour s'assurer que le header est au-dessus de la vidéo */ /* Couleur de fond avec une certaine transparence */
+
+}
+
+#background-video {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0; 
+    left: 0;
+    width: 100%; /* largeur de la fenêtre*/
+    height: 100vh; /* hauteur de la fenêtre, changez cette valeur si nécessaire */
+    object-fit: cover; /* s'assure que la vidéo couvre tout l'espace sans déformation */
+    z-index: -10; /* derrière tous les autres éléments dans le header */
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+  
+
+nav{
+    height: 75px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3); /* Couleur de fond avec une certaine transparence */
+    backdrop-filter: blur(20px); /* L'effet de flou */
+    -webkit-backdrop-filter: blur(10px);
+    padding-top: 20px;
+}
+
+
+/* Style de base pour les liens de la liste */
+.a .li {
+    position: relative;
+    color: gray; /* Couleur initiale du texte */
+    text-decoration: none; /* Enlève le soulignement par défaut */
+    transition: color 0.5s ease, top 0.5s ease; /* Anime la couleur et la position supérieure */
+  }
+  
+  /* Animation et style lors du survol des liens de la liste */
+  .a:hover li {
+    color: #d9dad9; /* Nouvelle couleur du texte au survol */
+    top: -5px; /* Déplace le lien vers le haut plus doucement et moins haut */
+  }
+  
+  /* Ajoute un soulignement attrayant lors du survol */
+  .a .li::after {
+    content: '';
+    position: absolute;
+    width: 0; /* Commence avec une largeur de 0 */
+    height: 2px;
+    background: #fff; /* Couleur de la ligne de soulignement */
+    left: 50%; /* Commence au milieu du lien */
+    bottom: -3px; /* Positionnement sous le texte */
+    transition: width 0.3s ease-out, left 0.3s ease-out; /* Anime la largeur et la position gauche plus lentement */
+    transform: translateX(-50% 50%); /* Centre le soulignement */
+  }
+  
+  /* L'animation de soulignement lors du survol */
+  .a:hover .li::after {
+    width: 100%; /* La largeur passe à 100% pour le soulignement complet */
+    left: 0; /* La position gauche revient à 0 */
+    transform: translateX(0%); /* Réinitialise la transformation pour l'animation */
+  }
+  
+  /* Styles pour les boutons lorsque l'utilisateur n'est pas connecté */
+  .login, .register {
+    transition: color 0.3s ease, transform 0.5s ease; /* Anime la couleur et la transformation plus lentement */
+  }
+  
+  /* Animation pour les boutons de connexion et d'inscription au survol */
+  .login:hover, .register:hover {
+    color: #fff; /* Change la couleur du texte au survol */
+    transform: translateY(-5px); /* Déplace le bouton vers le haut plus doucement et moins haut */
+    text-decoration: none; /* Enlève le soulignement par défaut, car il sera géré par le pseudo-élément */
+  }
+  
+
+.ul{
+    display: flex;
+    float: inline-end;
+    margin-inline-end: 150px;
+
+}
+
+.li{
+    margin-inline: 30px;
+    list-style: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logo{
+    margin-inline-start: 150px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.category{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.3); /* Couleur de fond avec une certaine transparence */
+    backdrop-filter: blur(10px); /* L'effet de flou */
+    -webkit-backdrop-filter: blur(10px);
+}
+.category a {
+    position: relative; /* Nécessaire pour le déplacement vertical */
+    text-decoration: none; /* Enlève la soulignure par défaut */
+    color: inherit; /* Hérite la couleur du texte du parent ou définit la couleur désirée */
+    transition: all 0.3s ease; /* Animation lisse pour toutes les propriétés changées */
+    overflow: hidden; /* Empêche tout débordement lors du déplacement du texte */
+    display: inline-block; /* Permet la transition sur les éléments en ligne */
+    padding-bottom: 2px; /* Espace pour la soulignure */
+  }
+  
+  .category a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor; /* La couleur de l'élément parent */
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0); /* Commence sans être affiché */
+    transition: transform 0.3s ease; /* Animation de la transformation */
+  }
+  
+  .category .a:hover, .category .a:focus {
+    transform: translateY(-10px); /* Déplace le texte vers le haut */
+  }
+  
+  .category .a:hover::after, .category .a:focus::after {
+    transform: scaleX(1); /* Étend la soulignure à pleine largeur */
+  }
+  
+
+.category p{
+    margin: 20px 20px;
+}
+
+.a{
+    text-decoration: none;
+    color: wheat;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.login{
+    text-decoration: none;
+    margin-inline: 10px;
+    transition: ease-in-out 0.6s ;
+    border: 2px solid wheat;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.login:hover{
+    color: white;
+    background-color:rgb(0, 102, 255);
+    border: rgb(0, 102, 255);
+}
+
+.register{
+    margin-inline: 10px;
+    text-decoration: none;
+    border: 2px solid rgb(0, 102, 255);
+    background: rgba(0, 102, 255, 0.904);
+    padding: 10px;
+    border-radius: 10px;
+    transition: ease-in-out 0.3s ;
+    color: white;
+
+}
+
+.register:hover{
+    background-color: rgb(5, 28, 160);
+    border: 2px solid rgb(8, 43, 196);
+    color: white;
+}
+
+.a:hover{
+    color: white;
+}
+
+
+
+#search-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Fond semi-transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100; /* S'assure que la barre est au-dessus des autres éléments */
+  }
+  
+  #search-input {
+    border: none;
+    border-bottom: 3px solid wheat;
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: wheat;
+    margin-right: 30px;
+    outline: none;
+  }
+  
+  #search-bar-container button {
+    padding: 10px 20px;
+    border: none;
+    background-color: wheat;
+    color: black;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  #search-bar-container button:hover {
+    transform: scale(1.1);
+    color: rgb(21, 255, 0);
+  }
+  
+
+  /* Style de base pour le texte animé */
+.animated-text {
+    position: absolute;
+    top: 50%; /* Centrer verticalement */
+    left: 50%; /* Centrer horizontalement */
+    transform: translate(-50%, -50%);
+    font-size: 80px; /* Taille du texte */
+    font-weight: bolder;
+    height: 95px; /* Hauteur de l'élément */
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    overflow: hidden; /* Cache le texte qui déborde */
+    border-right: 3px solid orange; /* Curseur d'écriture */
+    width: auto; /* Permet à la div de s'adapter au contenu */
+    max-width: 0; /* Commencez avec une largeur maximale de 0 */
+    animation: typing 3s steps(38, end) infinite alternate, blink-caret 5s step-end infinite;
+    color: rgb(190, 114, 52);
+  }
+  
+  /* Animation pour simuler l'écriture et la suppression du texte */
+  @keyframes typing {
+    from { max-width: 0; }
+    to { max-width: 24ch; } /* Adaptez cette valeur à la longueur de votre texte */
+  }
+  
+  /* Animation pour le clignotement du curseur */
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    0% { border-color: rgb(190, 114, 52); }
+  }
+
+
+
+
+
+
+  /* Style général pour l'en-tête */
+.header-content {
+    text-align: center;
+  }
+  
+  /* Cacher l'icône de menu par défaut */
+  .menu-icon {
+    display: none;
+  }
+  
+  /* Styles pour les écrans de moins de 950px */
+  @media (max-width: 950px) {
+    .menu-icon {
+      display: block; /* Montrer l'icône de menu */
+      cursor: pointer;
+      /* Styles supplémentaires pour l'icône ici */
+    }
+  
+    .navigation, .auth-links, .category {
+      display: none; /* Masquer les éléments du menu par défaut */
+    }
+  
+    .active .navigation, 
+    .active .auth-links, 
+    .active .category {
+      display: block; /* Afficher les éléments du menu lorsque 'active' est ajouté */
+      text-align: center;
+    }
+    
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    /* Adapter la taille de la vidéo pour les petits écrans */
+    #background-video {
+      width: 100%;
+      height: 100vh;
+      background-size: cover;
+      background-attachment: fixed;
+      position: fixed;
+    }
+  }
+  
+
+  .container-section{
+    z-index: 10;
+    background: white;
+  }
+
+  .big-section{
+    background-color: white;
+  }
+
+  #back-to-top-btn {
+    position: fixed;
+    bottom: 150px;
+    right: 25px;
+    display: none; /* Masquez le bouton au début */
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+
+  footer{
+    background-color: rgba(255, 255, 255, 0.3); /* Couleur de fond avec une certaine transparence */
+    backdrop-filter: blur(20px); /* L'effet de flou */
+    -webkit-backdrop-filter: blur(10px);
+    /* z-index: ; */
+  }
+
+  
